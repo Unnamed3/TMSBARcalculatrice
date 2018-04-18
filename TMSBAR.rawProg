@@ -1,0 +1,256 @@
+﻿CGRect
+CoordAff
+QuadNAff
+AxesNAff
+ÉtiqNAff
+ExprNAff
+CouleurBord 4
+ArrPlanNAff
+DétectAsymDés
+Lbl N
+EffDess
+Texte(1,1,"TMSBAR welcome"):Texte(15,15,"Continuer"):Texte(35,15,"Mettre a jour SS"):Texte(55,15,"Premier lancement"):Texte(75,15,"Quitter")
+15→R:1→N:0→A
+Repeat A=1
+getKey→θ
+Texte(R,5,">")
+"D
+If θ=34:Then
+Texte(R,5,"     ")
+R+20→R:N+1→N
+If N=5:Then
+15→R:1→N
+End
+End
+"U
+If θ=25:Then
+Texte(R,5,"     ")
+R-20→R
+N-1→N
+If N=0:Then
+75→R:4→N
+End
+End
+"En
+If θ=105:Then
+If N=4:Then
+1→A
+Goto EX
+End
+If N=1:Then
+1→A
+Goto C
+End
+If N=2:Then
+1→A
+Goto MJ
+End
+If N=3:Then
+1→A
+Goto PL
+End
+End
+End
+
+Lbl MJ
+Input "Secondes = ",S
+{S}→⌊SS
+Lbl C
+3→dim(⌊TMLFT
+EffÉcran
+Output(1,1,"SS =
+⌊SS(1)→S
+Output(1,6,S)
+Output(5,7,"Please wait...")
+RappelBDG 2
+affDate→⌊DATE
+⌊DATE(1)→A
+⌊DATE(2)→B
+⌊DATE(3)→C
+(joursem(A,B,C))-1→I
+affHeure→⌊HEURE
+⌊HEURE(1)→A
+⌊HEURE(2)→B
+⌊HEURE(3)→C
+A60+B→B
+B60+C→A
+For(D,1,26,1
+partEnt(⌊SONNE(D))→B
+(partDéc(⌊SONNE(D))2→C
+B60+C→B:B60+S→B
+Lbl B
+If D=26:Then
+EffÉcran
+Disp "MDLOL(C pa drole tu n'est
+Disp "pas au lycée !
+Output(5,8,"Erreur MD pas LOL
+Stop:End
+If B>A et [E](D,I)>0
+Goto A
+End
+Lbl A
+EffÉcran:RappelBDG 2
+D→A
+CouleurTexte(BLEU)
+If D≥2:Then
+Repeat [E](D,I)>0
+D-1→D
+End
+partEnt(⌊SONNE(D))→J
+(partDéc(⌊SONNE(D))2→C
+Else
+Ligne(­10,­7,10,­10,ROUGE)
+Ligne(10,­7,­10,­10,ROUGE)
+Texte(120,30,"INDISPONIBLE 42ère SONNERIE"
+End
+A→D
+J60+C→J:J60+S→J
+If D=1 ou D=3 ou D=8 ou D=10 ou D=12 ou D=14 ou D=16 ou D=21
+Texte(40,0,"(Début/Fin cours)
+If D=2 ou D=4 ou D=7 ou D=9 ou D=11 ou D=13 ou D=15 ou D=17 ou D=20 ou D=22
+Texte(40,0,"(Retard)
+If D=23
+Texte(40,0,"(Fin des cours)
+If D=5 ou D=18
+Texte(40,0,"(Recré)
+
+If D=6 ou D=19
+Texte(40,0,"(Fin de la récré)
+If I=1:Texte(0,220,"Lundi
+If I=2:Texte(0,220,"Mardi
+If I=3:Texte(0,200,"Mercredi
+If I=4:Texte(0,220,"Jeudi
+If I=5:Texte(0,200,"Vendredi
+
+Texte(0,0,"Heure
+Texte(60,0,"Il reste :
+convHeur(B)→⌊NXTSN
+Texte(20,0,"Prochaine sonnerie à ",⌊NXTSN(2),":",⌊NXTSN(3),":",⌊NXTSN(4))
+Ligne(­10,­9.85,10,­9.85,NOIR
+Ligne(­10,­7,10,­7,NOIR
+Ligne(­10,­7,­10,­10,NOIR
+Ligne(9.90,­7,9.90,­10,NOIR
+­9.85→H
+Repeat 1=2
+getKey→K
+
+
+If K=22:Goto ST
+If K=14:Then
+EnrPic 1
+RappelBDG 2
+Texte(0,0,"Dernière sonnerie à
+0→A
+If D>1:Then
+Texte(50,0,⌊SONNE(D-1))
+Texte(0,170,⌊BAKSN(2),":",⌊BAKSN(3),":",⌊BAKSN(4)
+Else
+
+End
+
+Repeat K=105
+getKey→K
+
+If K=104:error
+
+End
+RappelBDG 2
+RappelPic 1
+End
+
+
+If K=13:Then
+If K=104:error
+EnrPic 1
+RappelBDG 2
+Repeat K=105
+getKey→K
+Texte(0,0,"Select. une heure de fin des cours")
+End
+"End Repeat 
+RappelBDG 2
+RappelPic 1
+End
+"End K13
+affHeure→⌊HEURE
+⌊HEURE(1)→E
+⌊HEURE(2)→F
+⌊HEURE(3)→G
+Texte(0,50,E,":",F,":",G,"   ")
+
+"AFFICHAGE HEURE
+
+E60+F→F
+F60+G→G
+G→K
+B-G→G
+If G<0
+Goto C
+G/60→G
+partDéc(G)*60→⌊TMLFT(3
+partEnt(G)/60→G
+partEnt(G)→⌊TMLFT(1
+partDéc(G)*60→⌊TMLFT(2
+If ⌊TMLFT(1)>0
+Then
+Texte(60,70,⌊TMLFT(1),"h    ",⌊TMLFT(2),"m",⌊TMLFT(3),"s","   ")
+"Erreur MDLOL désactivée
+"EffÉcran
+"26→D
+"Goto B
+Else
+Texte(60,70,⌊TMLFT(2),"m",⌊TMLFT(3),"s","   ")
+End
+
+
+If ⌊HEURE(3)≠⌊HEUR2(3) et D≠1:Then
+affHeure→⌊HEUR2
+((K-J)/(B-J))*100→P
+((P/100)*19.7-9.9)→C
+For(E,H,C,0.1)
+Ligne(E,­9.696,E,­7.2,VERT)
+End
+C→H
+arrondir(P,2)→P
+Texte(100,30,"Progression du cours :","  ",P," ","°/o              "
+Ligne(­10,­9.85,10,­9.85,NOIR
+End
+End
+Lbl ST
+EffÉcran
+RappelBDG 0
+Output(5,6,"Programme arrêté
+Stop
+End
+If 1=2
+Lbl PL
+CGRect
+CoordAff
+LigneAff 
+AxesAff 
+ÉtiqNAff
+ExprAff
+CouleurBord 1
+ArrPlanNAff
+DétectAsymDés
+EnrBDG 0
+CGRect
+CoordAff
+QuadNAff
+AxesNAff
+ÉtiqNAff
+ExprNAff
+CouleurBord 4
+ArrPlanNAff
+DétectAsymDés
+EnrBDG 2
+{8.05,8.1,9.05,9.1,10,10.1,10.15,11.1,11.15,12.05,12.1,13,13.05,13.5,13.55,14.5,14.55,15.45,15.55,16,16.55,17,17.5,0,0,0}→⌊SONNE
+[[1,1,1,1,1][1,1,1,1,1][0,1,0,0,0][0,1,0,0,0][1,1,1,1,1][1,1,1,1,1][1,1,1,1,1][1,0,1,1,1][1,0,1,1,1][1,1,1,1,1][1,1,1,1,1][1,1,1,1,1][1,1,1,1,1][1,1,1,1,1][1,1,1,1,1][1,0,1,0,1][1,0,1,0,1][1,1,1,1,1][1,1,1,1,1][1,1,1,1,1][1,1,1,1,1][1,1,1,1,1][1,1,1,1,1][0,1,1,1,1][9999,9999,9999,9999,9999]]→[E]
+3→dim(⌊HEUR2)
+{S}→⌊SS
+Texte(120,0,"TMSBAR a exploser"
+Pause 
+Goto N
+End
+Lbl EX
+Disp 
